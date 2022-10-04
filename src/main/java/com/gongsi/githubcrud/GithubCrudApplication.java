@@ -15,6 +15,7 @@ public class GithubCrudApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(GithubCrudApplication.class, args);
+        System.out.println("bb");
     }
 
 }
