@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gongsi.githubcrud.mapper.UserMapper">
+    <select id="find" parameterType="Integer" resultType="User">
+        select *
+        from user
+        where id = #{id}
+    </select>
+    <select id="select" parameterType="User" resultType="User">
+        select * from user
+        <where>
+            <if test=" name != null and name != ''">
+                and name like concat('%',#{name})  <!--前置模糊查询-->
+            </if>
+
+            <if test="sex != null and sex != ''">
+                and sex = #{sex}
+            </if>
+
+            <if test="age != null">
+                and age = #{age}
+            </if>
+        </where>
+    </select>
+
+    <delete id="delete" parameterType="Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="user">
+        insert into user (name,sex,age) values (#{name},#{sex},#{age})
+    </insert>
+
+    <update id="update" parameterType="User">
+        update user set name = #{name},sex = #{sex},age = #{age} where id = #{id}
+    </update>
+
+    <delete id="deleteByIds" parameterType="Integer">
+        delete from user where id in
+            <foreach collection="list" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+    </delete>
+    <insert id="insertBatch" parameterType="User">
+        insert into user (name,sex,age) values
+        <foreach collection="list" item="user" separator=",">
+            (#{user.name},#{user.sex},#{user.age})
+        </foreach>
+    </insert>
+    <insert id="insertResultId" parameterType="user" useGeneratedKeys="true" keyProperty="id">
+        insert into user (name, sex, age) values (#{name},#{sex},#{age})
+    </insert>
+</mapper>
