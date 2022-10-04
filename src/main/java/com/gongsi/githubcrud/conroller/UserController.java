@@ -48,7 +48,6 @@ public class UserController {
     @RequestMapping("/update")
     public void update(User user) {
         boolean result = userServic.update(user);
-        System.out.println(result);
     }
     @RequestMapping("/deleteByIds")
     public void deleteByIds(List<Integer> ids) {

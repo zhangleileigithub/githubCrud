@@ -5,6 +5,7 @@ import com.gongsi.githubcrud.pojo.User;
 import com.gongsi.githubcrud.service.UserServic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -36,9 +37,17 @@ public class UserServiceImpl implements UserServic {
         boolean result = userMapper.insert(user);
         return result;
     }
-    
+    /*
+    * 使用当前毫秒数对2取余模拟随机异常
+    * */
+    @Transactional
     public boolean update(User user) {
         boolean result = userMapper.update(user);
+        System.out.println(result);
+        long millis = System.currentTimeMillis();
+        if (millis%2==0){
+            int a=1/0;
+        }
         return result;
     }
     //批量删除
