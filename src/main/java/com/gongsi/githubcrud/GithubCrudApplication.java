@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.gongsi.githubcrud.mapper")
-@EnableScheduling
+@EnableScheduling //开启定时任务注解
 //不需要使用@ComponentScan，因为springboot默认扫描启动类所在同级目录下的所有类
 //@ComponentScan(basePackages = {"com.gongsi.githubcrud.conroller","com.gongsi.githubcrud.service"})
 public class GithubCrudApplication {
