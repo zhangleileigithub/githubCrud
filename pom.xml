@@ -23,17 +23,20 @@
         </dependency>
 
         <dependency>
-            <!--测试依赖  -->
+            <!--测试依赖  使用@SpringbootTest注解-->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <version>2.3.7.RELEASE</version>
-            <scope>test</scope>
-            <exclusions>
+            <!--定义只能在test目录中通过右键-make Directory as- Test Sources Root来标记
+            否则在main->java目录Sources Root标记的就无法导入 注释掉main->java中就可以导入了-->
+            <!--<scope>test</scope>-->
+            <!--排除junit依赖 无法使用@Test，@RunWith注解 使用单元测试时把他注释掉-->
+            <!--<exclusions>
                 <exclusion>
                     <groupId>org.junit.vintage</groupId>
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
         <!--springboot-Web的起步依赖，不加的话项目启动会自动停止-->
         <dependency>
