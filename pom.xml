@@ -87,9 +87,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <!--maven编译时指定的jdk版本为8-->
+
     <build>
         <plugins>
+            <!--maven编译时指定的jdk版本为8-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -98,7 +99,21 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+
+            <!--springboot打包成jar需要的插件
+            此时springboot直接使用maven打包即可在 cmd命令提示符 中运行打包好的jar项目-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
-
 </project>
