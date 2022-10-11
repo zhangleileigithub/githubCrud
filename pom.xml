@@ -87,7 +87,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <!--设置项目JDK版本为8，才可使用版本8中的lamda表达式-->
+    <!--maven编译时指定的jdk版本为8-->
     <build>
         <plugins>
             <plugin>
@@ -100,4 +100,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
