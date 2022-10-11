@@ -1,0 +1,2 @@
+springboot会默认调用resources下的public包 static包（此两个包可以放静态资源文件.html 等）
+templates包（此包中放动态资源文件）
