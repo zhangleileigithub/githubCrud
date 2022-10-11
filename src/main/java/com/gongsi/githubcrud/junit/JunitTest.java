@@ -1,8 +1,11 @@
 package com.gongsi.githubcrud.junit;
 
 
+import com.gongsi.githubcrud.pojo.User;
+import com.gongsi.githubcrud.service.UserServic;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -23,9 +26,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 public class JunitTest {
+    @Autowired
+    UserServic userServic;
     @Test
     public void ceShi(){
-        System.out.println("启用单元测试");
+        User user = userServic.find(1);
+        System.out.println("启用单元测试"+user);
+
     }
     
 }
