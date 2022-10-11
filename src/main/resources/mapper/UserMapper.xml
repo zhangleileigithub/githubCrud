@@ -10,6 +10,9 @@
     <select id="select" parameterType="User" resultType="User">
         select * from user
         <where>
+            <if test=" id != null and id != ''">
+                and id = #{id}  <!--前置模糊查询-->
+            </if>
             <if test=" name != null and name != ''">
                 and name like concat('%',#{name})  <!--前置模糊查询-->
             </if>
