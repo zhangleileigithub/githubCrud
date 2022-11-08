@@ -7,6 +7,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>githubCrud</name>
     <description>githubCrud</description>
+    <!--sprigboot默认打包成jar包 ，可在这里设置成war包的形式-->
+    <packaging>war</packaging>
 
     <properties>
         <java.version>1.8</java.version>
@@ -73,6 +75,12 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
+        </dependency>
+        <!--需要打war包时，去除springboot中内置的tomcat，否则会与linux系统中安装的tomcat冲突
+        ，不打war包时把它注释掉-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
     </dependencies>
 
